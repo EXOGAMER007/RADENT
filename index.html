@@ -12,25 +12,6 @@
     <script type="text/javascript" src="./js/rgbjs.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/sacAnim.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/sacjs.js" charset="utf-8"></script>
-    <script type="text/javascript">
-        // Patch: fix bug di sacjs.js di mana _0x79d7x1.versions adalah fungsi
-        // tapi diakses sebagai object property (.versions.mobile, .versions.ios, dll)
-        // Ini menyebabkan crash di mobile browser → loading screen tidak hilang
-        (function patchBrowserDetection() {
-            // Cari semua variable global yang punya property 'versions' berupa function
-            for (var key in window) {
-                try {
-                    var obj = window[key];
-                    if (obj && typeof obj === 'object' && typeof obj.versions === 'function') {
-                        // Panggil versions() dan simpan hasilnya sebagai object
-                        obj.versions = obj.versions();
-                        console.log('[Patch] Fixed browser detection object:', key);
-                        break;
-                    }
-                } catch(e) {}
-            }
-        })();
-    </script>
 </head>
 <body>
 
